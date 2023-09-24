@@ -535,7 +535,10 @@
 		You're just one click away!
 	</h2>
 
-	<div class="mt-14 flex">
+	<div class="mt-14 flex"
+		 data-aos="fade-up"
+		 data-aos-anchor-placement="center-bottom"
+		 data-aos-duration="500">
 		<a
 			class="text-white relative mx-3
 		 rounded-lg z-1 bg-gradient-to-r from-neutral-100 to-neutral-300"
@@ -555,6 +558,9 @@
 	</div>
 	<div class="mt-14 flex">
 		<div
+				data-aos="fade-up"
+				data-aos-anchor-placement="center-bottom"
+				data-aos-duration="500"
 			class="card flex flex-col justify-center items-center text-white relative"
 			style="background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05)); border: 1px solid rgba(255,255,255,0.5) !important;"
 		>
