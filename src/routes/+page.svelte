@@ -7,53 +7,86 @@
 
 	let pagescrollY = 0;
 	let elementOneMarginX = 0;
+    let MouseX = 0;
+    let MouseY = 0;
+	let finalStyleOfMouseFollower = [
+		'w-44',
+		'h-44', 'opacity-5',
+		'from-neutral-400', 'to-neutral-500',
+		'rounded-full',
+		'animate-pulse'
+	]
+		.join(' ');
+	let initStyleOfMouseFollower = [
+		'w-40',
+		'h-40', 'opacity-10',
+		'from-neutral-100',
+		'to-neutral-300',]
+		.join(' ');
 	onMount(() => {
 		AOS.init();
 		window.addEventListener('scroll', () => {
 			pagescrollY = window.scrollY;
 			console.log(pagescrollY);
 			if (pagescrollY < 1833) {
-				elementOneMarginX = 150;
+				elementOneMarginX = 140;
 			} else {
-				elementOneMarginX = 150 - (pagescrollY - 1833) / 10;
+				elementOneMarginX = 140 - (pagescrollY - 1833) / 10;
 				console.log(elementOneMarginX);
 			}
 		});
-	});
-	let arrayOfFeatures = [
+        window.addEventListener('mousemove', (e) => {
+            MouseX = e.clientX;
+            MouseY = e.clientY;
+            console.log(MouseX, MouseY);
+        });
+		// when hover .card and buttons, change style of .mouseFollower
+		const elements = [...document.querySelectorAll('.card'), ...document.querySelectorAll('a'), ...document.querySelectorAll('.commanditem'), ...document.querySelectorAll('button')];
+		const mouseFollower = document.querySelector('.mouseFollower');
+		elements.forEach((element) => {
+			element.addEventListener('mouseenter', () => {
+				mouseFollower.classList.remove(...initStyleOfMouseFollower.split(' '));
+				mouseFollower.classList.add(...finalStyleOfMouseFollower.split(' '));
+			});
+			element.addEventListener('mouseleave', () => {
+				mouseFollower.classList.remove(...finalStyleOfMouseFollower.split(' '));
+				mouseFollower.classList.add(...initStyleOfMouseFollower.split(' '));
+			});
+		});
+	});let arrayOfFeatures = [
 		{
 			name: 'Utilities.',
 			style: 'from-red-800 to-orange-300',
 			description:
-				'Ch$rry is a multi-purpose Discord bot with tons of utilities like moderation, AI, economy, and more.'
+					'Ch$rry is a multi-purpose Discord bot with tons of utilities like moderation, AI, economy, and more.'
 		},
 		{
 			name: 'Moderation.',
 			style: 'from-pink-500 to-violet-500',
 			description:
-				"Ch$rry's advanced moderation tools help you keep your server safe and clean without any hassle."
+					"Ch$rry's advanced moderation tools help you keep your server safe and clean without any hassle."
 		},
 		{
 			name: 'ChatGPT.',
 			style: 'from-yellow-500 to-pink-500',
-			description: "Ch$rry's ChatGPT feature allows you to talk to an GPT directly in your server."
+			description: "Ch$rry's ChatGPT feature allows you to ask questions and talk to ChatGPT directly through your server."
 		},
 		{
 			name: 'AI tools.',
 			style: 'from-green-500 to-blue-500',
 			description:
-				'Ch$rry has tons of AI features that generate images, texts, and more with different options.'
+					'Ch$rry has tons of AI features that generate images, texts, and more with different options.'
 		},
 		{
 			name: 'Games.',
 			style: 'from-cyan-500 to-blue-500',
-			description: "Ch$rry's games are fun and helps make your server more interactive and fun."
+			description: "Ch$rry's awesome games are fun and helps make your server more interactive and fun."
 		},
 		{
 			name: 'Economy.',
 			style: 'from-violet-500 to-purple-500',
 			description:
-				'Ch$rry includes a crypto system linked to real-life crypto coins. No money? Gamble it!'
+					'Ch$rry includes a crypto system linked to real-life crypto coins. No money? Gamble it!'
 		}
 	];
 	let liveText = '';
@@ -78,7 +111,7 @@
 		num
 	);
 </script>
-
+<div class="mouseFollower fixed blur-3xl bg-gradient-to-r z-50 pointer-events-none {initStyleOfMouseFollower}" style="top: {MouseY}px; left: {MouseX}px; transform: translate(-50%, -50%); border-radius: 50%; transition: 0.1s linear"></div>
 <header
 	class="w-full h-16 p-5 pl-56 text-sm fixed z-10 text-neutral-400 flex justify-start items-center backdrop-blur-3xl"
 	style="background-color: rgba(0,0,0,0.1)"
@@ -106,7 +139,7 @@
 		class="mx-4 hover:text-neutral-200 hover-underline-animation"
 		href="https://docs.cherrybot.xyz/"
 	>
-		API for devs
+		API for developers
 	</a>
 	<a
 		class="mx-4 hover:text-neutral-200 hover-underline-animation"
@@ -116,7 +149,7 @@
 	</a>
 </header>
 
-<section class="flex justify-start items-center flex-col text-center pt-24">
+<section class="flex justify-start items-center flex-col text-center pt-32">
 	<h2
 		class="text-2xl text-neutral-500 font-bold tracking-normal mt-32 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
 	>
@@ -182,7 +215,7 @@
 	</div>
 </section>
 <section class="flex justify-center flex-col items-center mt-36">
-	<div class="mt-16 mb-96 text-neutral-500">👇 Start exploring Ch$rry!</div>
+	<div class="mt-24 mb-80 text-neutral-500">👇 Start exploring Ch$rry!</div>
 	<div class="grid grid-cols-3 w-max text-center">
 		<div
 			data-aos="fade-up"
@@ -296,7 +329,7 @@
 <section
 	class="flex justify-start flex-col items-center"
 	data-aos="fade-up"
-	data-aos-anchor-placement="center-bottom"
+	data-aos-anchor-placement="top-bottom"
 	data-aos-duration="500"
 >
 	<h2
@@ -314,12 +347,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/Aki</li>
+			<li class="commanditem">/Avatar</li>
+			<li class="commanditem">/Badges</li>
+			<li class="commanditem">/Balanace</li>
+			<li class="commanditem">/Banner</li>
+			<li class="commanditem">/Beg</li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -328,12 +361,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/Ben</li>
+			<li class="commanditem">/Botinfo</li>
+			<li class="commanditem">/Chatgpt ask</li>
+			<li class="commanditem">/Chatgpt followup</li>
+			<li class="commanditem">/Color</li>
+			<li class="commanditem">/Crypto</li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -342,12 +375,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/Discrim</li>
+			<li class="commanditem">/HypeSquad</li>
+			<li class="commanditem">/Image generate</li>
+			<li class="commanditem">/Image Get</li>
+			<li class="commanditem">/Instagram user</li>
+			<li class="commanditem">/Inventory</li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -356,12 +389,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/Help</li>
+			<li class="commanditem">/Hunt</li>
+			<li class="commanditem">/Job</li>
+			<li class="commanditem">/Devices</li>
+			<li class="commanditem">/Dig</li>
+			<li class="commanditem">/Lastfm</li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -370,12 +403,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/Draw</li>
+			<li class="commanditem">/Embed</li>
+			<li class="commanditem">/Enlarge</li>
+			<li class="commanditem">/Eval</li>
+			<li class="commanditem">/Fish</li>
+			<li class="commanditem">/Fortunecookie</li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -384,12 +417,12 @@
 			data-aos-anchor-placement="center-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Kick</li>
-			<li class="commanditem">/Timeout</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
-			<li class="commanditem">/Ban</li>
+			<li class="commanditem">/8Ball</li>
+			<li class="commanditem">/Advise</li>
+			<li class="commanditem">/Gamble</li>
+			<li class="commanditem">/Instagram download</li>
+			<li class="commanditem">/Leaderboard</li>
+			<li class="commanditem">/Levels</li>
 		</ul>
 	</div>
 </section>
@@ -404,7 +437,7 @@
 			style=" margin-top: -10rem;"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-teal-500"
 			>
 				Instagram / TikTok
 			</p>
@@ -421,7 +454,7 @@
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-blue-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-indigo-500"
 			>
 				Faster Responses.
 			</p>
@@ -445,7 +478,7 @@
 			style=" margin-top: -10rem"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-cyan-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-red-500"
 			>
 				Leveling.
 			</p>
@@ -462,7 +495,7 @@
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-red-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-teal-500"
 			>
 				Akinator.
 			</p>
@@ -478,7 +511,7 @@
 			style="margin-top: -10rem"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-pink-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-yellow-500"
 			>
 				LastFM.
 			</p>
@@ -509,7 +542,7 @@
 			style="margin-top: -10rem"
 		>
 			<p
-				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-slate-500"
+				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-emerald-500"
 			>
 				Lmfao.
 			</p>
@@ -562,21 +595,20 @@
 				data-aos-anchor-placement="center-bottom"
 				data-aos-duration="500"
 			class="card flex flex-col justify-center items-center text-white relative"
-			style="background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05)); border: 1px solid rgba(255,255,255,0.5) !important;"
+			style="background: linear-gradient(180deg, rgba(255,115,90,0.64), rgba(255,0,0,0.83)); border: 0px solid rgba(255,255,255,0.5) !important; padding:1px !important;"
 		>
-			<h2
-				class="text-3xl w-full text-center text-neutral-500 font-bold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-amber-500"
-			>
-				Buy Ch$rry Premium!
-			</h2>
-			<ul class="mt-10 list-disc text-neutral-300">
-				<li>Custom Prefix</li>
-				<li>Custom Embed Color</li>
-				<li>Custom Welcome Message</li>
-				<li>Custom Leave Message</li>
-				<li>Custom Level Up Message</li>
-			</ul>
-			<p class="mt-8 text-neutral-500">Join server for getting Premium access!</p>
+			<div class="p-12 rounded-xl w-full h-full flex flex-col justify-center items-center text-white relative bg-gradient-to-b from-neutral-900 to-neutral-900">
+				<h2
+					class="text-3xl w-full text-center text-neutral-500 font-bold tracking-normal bg-clip-text text-transparent bg-gradient-to-r from-red-900 to-amber-500"
+				>
+					Buy Ch$rry Premium!
+				</h2>
+				<ul class="mt-10 list-disc text-neutral-300">
+					<li>More Economy commands!</li>
+					<li>More Premium features coming soon!</li>
+				</ul>
+				<p class="mt-8 text-neutral-500">Join server for getting Premium access!</p>
+			</div>
 		</div>
 	</div>
 </section>
@@ -584,7 +616,7 @@
 	class="flex justify-start flex-col items-center border-t-neutral-700 border-t mt-36 p-5 bg-neutral-800"
 >
 	<p class="text-neutral-400 text-xs tracking-wide leading-8">
-		2021 © Ch$rry Network. All rights reserved. Made with ❤️ by <a
+		2023 © Ch$rry Network. All rights reserved. Made with ❤️ by <a
 			class="hover-underline-animation"
 			href="https://www.github.com/clapann">Clapan</a
 		>, Site by
@@ -592,10 +624,14 @@
 	</p>
 </section>
 <!-- TODO:
-[ ] Mouse Follower
-[ ] Add Commands
-[ ] Add info on premium
 [ ] Add Routes
 [ ] Responsive Design
-[ ] clap review
+[ ] Clap review
+[ ] Add Commands
+[x] Mouse Follower
+[x] Margin issues
+[x] Add info on premium
+[x] Colors
+[x] Year
+[x] Title
 -->

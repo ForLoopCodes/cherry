@@ -105,7 +105,8 @@ section {
 	font-family: 'space mono', monospace;
 }
 .commanditem {
-	@apply rounded px-5 py-1.5 text-neutral-300 text-lg mx-2.5 hover:bg-gradient-to-r hover:from-neutral-200 hover:to-slate-300 hover:text-neutral-900;
+	@apply rounded w-max px-5 py-1.5 text-neutral-300 text-lg mx-2.5 hover:bg-gradient-to-r hover:from-neutral-200 hover:to-slate-300 hover:text-neutral-900;
 	background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.03));
 	margin-bottom: 1.5rem;
+	transition: 0.5s ease !important;
 }
