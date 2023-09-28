@@ -1,0 +1,4 @@
+{
+    "nodejs.editor.formatOnSave.eslint.glob": "{**/*,*}.{js,ts,jsx,tsx,svelte,html,css}",
+    "nodejs.editor.formatOnSave.prettier.glob": "{**/*,*}.{js,ts,jsx,tsx,svelte}"
+}

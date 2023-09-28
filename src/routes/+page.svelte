@@ -4,7 +4,11 @@
 	import AOS from 'aos';
 
 	import { onMount } from 'svelte';
-
+	$: screenWidth = 0;
+	$: size0 = screenWidth <= 800 && screenWidth > 0
+	$: size1 = screenWidth <= 1250 && screenWidth > 800
+	$: size2 = screenWidth <= 2000 && screenWidth > 1250
+	$: size3 = screenWidth <= 3000 && screenWidth > 2000
 	let pagescrollY = 0;
 	let elementOneMarginX = 0;
     let MouseX = 0;
@@ -40,6 +44,18 @@
             MouseY = e.clientY;
             console.log(MouseX, MouseY);
         });
+		screenWidth = window.innerWidth;
+		size0 = screenWidth <= 800 && screenWidth > 0
+		size1 = screenWidth <= 1250 && screenWidth > 800
+		size2 = screenWidth <= 2000 && screenWidth > 1250
+		size3 = screenWidth <= 3000 && screenWidth > 2000
+		window.addEventListener('resize', () => {
+			screenWidth = window.innerWidth;
+			size0 = screenWidth <= 800 && screenWidth > 0
+			size1 = screenWidth <= 1250 && screenWidth > 800
+			size2 = screenWidth <= 2000 && screenWidth > 1250
+			size3 = screenWidth <= 3000 && screenWidth > 2000
+		});
 		// when hover .card and buttons, change style of .mouseFollower
 		const elements = [...document.querySelectorAll('.card'), ...document.querySelectorAll('a'), ...document.querySelectorAll('.commanditem'), ...document.querySelectorAll('button')];
 		const mouseFollower = document.querySelector('.mouseFollower');
@@ -53,7 +69,8 @@
 				mouseFollower.classList.add(...initStyleOfMouseFollower.split(' '));
 			});
 		});
-	});let arrayOfFeatures = [
+	});
+	let arrayOfFeatures = [
 		{
 			name: 'Utilities.',
 			style: 'from-red-800 to-orange-300',
@@ -111,9 +128,9 @@
 		num
 	);
 </script>
-<div class="mouseFollower fixed blur-3xl bg-gradient-to-r z-50 pointer-events-none {initStyleOfMouseFollower}" style="top: {MouseY}px; left: {MouseX}px; transform: translate(-50%, -50%); border-radius: 50%; transition: 0.1s linear"></div>
+<div class="mouseFollower {size0 && 'hidden'} fixed blur-3xl bg-gradient-to-r z-50 pointer-events-none {initStyleOfMouseFollower}" style="top: {MouseY}px; left: {MouseX}px; transform: translate(-50%, -50%); border-radius: 50%; transition: 0.1s linear"></div>
 <header
-	class="w-full h-16 p-5 pl-56 text-sm fixed z-10 text-neutral-400 flex justify-start items-center backdrop-blur-3xl"
+	class="w-full h-16 p-5 {size0 ? 'pl-0 justify-center' : size1? 'pl-0 justify-center' : 'pl-56'} text-sm fixed z-10 text-neutral-400 flex justify-start items-center backdrop-blur-3xl"
 	style="background-color: rgba(0,0,0,0.1)"
 >
 	<a class="mx-4 hover:text-neutral-200" href="/">
@@ -124,42 +141,47 @@
 		/>
 	</a>
 	<a
-		class="mx-4 hover:text-neutral-200 hover-underline-animation"
+			class="mx-4 hover:text-neutral-200 hover-underline-animation bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-amber-900 font-extrabold after:scale-x-100 after:origin-bottom-left after:bg-gradient-to-r after:from-red-700 after:to-amber-900"
+			href="https://top.gg/bot/775604826448592927/vote"
+	>
+		Vote for Ch$rry
+	</a>
+	<a
+		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
 		href="https://discord.com/oauth2/authorize?client_id=775604826448592927&permissions=1644971949567&scope=applications.commands%20bot"
 	>
 		Invite
 	</a>
 	<a
-		class="mx-4 hover:text-neutral-200 hover-underline-animation"
+		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
 		href="https://discord.com/invite/aTGSF4U6f4"
 	>
 		Support
 	</a>
 	<a
-		class="mx-4 hover:text-neutral-200 hover-underline-animation"
+		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
 		href="https://docs.cherrybot.xyz/"
 	>
 		API for developers
 	</a>
-	<a
-		class="mx-4 hover:text-neutral-200 hover-underline-animation"
-		href="https://top.gg/bot/775604826448592927/vote"
-	>
-		Vote for Ch$rry
-	</a>
 </header>
 
-<section class="flex justify-start items-center flex-col text-center pt-32">
+<section class="{size0 ? 'pt-16' : size1 ? 'pt-20' : 'pt-24'} flex justify-start items-center flex-col text-center px-10">
 	<h2
-		class="text-2xl text-neutral-500 font-bold tracking-normal mt-32 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
+		class="{size0 ? 'text-lg' : 'text-2xl'} text-neutral-500 font-bold tracking-normal mt-32 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
 	>
 		Upgrade your server with the
 	</h2>
 	<h1
-		class="text-8xl w-11/12 tracking-tighter font-extrabold mt-8 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
+		class="{size0 ? 'text-5xl leading-28' : size1 ? 'text-7xl' : 'text-8xl'} w-11/12 tracking-tighter font-extrabold mt-8 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
 		style="font-family: 'Inter', monospace"
 	>
 		Power of
+		<span class="divider">
+			{#if size0 || size1}
+				<br/>
+			{/if}
+		</span>
 		<span
 			class="bg-clip-text pr-0.5 tracking-tighter text-transparent bg-gradient-to-r {arrayOfFeatures[
 				num
@@ -176,7 +198,7 @@
 		</span>
 	</h1>
 	<h2
-		class="text-neutral-500 text-xl tracking-wide mt-10 w-4/12 leading-8"
+		class="{size0 ? 'w-10/12 text-sm leading-5' : size1 ? 'w-6/12 text-xl leading-8' : 'w-4/12 text-xl leading-8'} text-neutral-500 tracking-wide mt-10"
 		style="animation: blink1 7s linear infinite"
 	>
 		{arrayOfFeatures[num].description}
@@ -214,12 +236,12 @@
 		</a>
 	</div>
 </section>
-<section class="flex justify-center flex-col items-center mt-36">
-	<div class="mt-24 mb-80 text-neutral-500">👇 Start exploring Ch$rry!</div>
-	<div class="grid grid-cols-3 w-max text-center">
+<section class="{size0 ? 'mt-20' : size1 ? 'mt-16' : 'mt-24'} flex justify-center flex-col items-center">
+	<div class="{size0 ? 'mt-2 text-sm' : size1 ? 'mt-20' : 'mt-24'} mb-80 text-neutral-500">👇 Start exploring Ch$rry!</div>
+	<div class="grid {size0 ? 'grid-cols-1' : size1 ? 'grid-cols-2' : 'grid-cols-3'} w-max text-center">
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
 			style=" margin-top: -10rem;"
@@ -235,8 +257,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -251,15 +273,15 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem; opacity:0;"
+			style="margin-top: -10rem; opacity:0;{size0 || size1 ? 'display: none' : 'display: auto'}"
 		/>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
 			style=" margin-top: -10rem"
@@ -274,8 +296,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -290,8 +312,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
 			style="margin-top: -10rem"
@@ -307,11 +329,11 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem"
+			style="{size0 || size1 ? '' : 'margin-top: -10rem;'}"
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-slate-500"
@@ -328,8 +350,8 @@
 
 <section
 	class="flex justify-start flex-col items-center"
-	data-aos="fade-up"
-	data-aos-anchor-placement="top-bottom"
+	data-aos={size0 ? 'none' : 'fade-up'}
+	data-aos-anchor-placement="none"
 	data-aos-duration="500"
 >
 	<h2
@@ -344,7 +366,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.4 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/Aki</li>
@@ -358,7 +380,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.5 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/Ben</li>
@@ -372,7 +394,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.5 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/Discrim</li>
@@ -386,7 +408,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.8 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/Help</li>
@@ -400,7 +422,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.5 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/Draw</li>
@@ -414,7 +436,7 @@
 			class="flex my-3"
 			style={'padding-left:' + elementOneMarginX * 0.7 + '% !important'}
 			data-aos="fade-left"
-			data-aos-anchor-placement="center-bottom"
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
 			<li class="commanditem">/8Ball</li>
@@ -430,8 +452,8 @@
 	<div class="mt-16 mb-96 text-neutral-500">Not yet, there's even more!</div>
 	<div class="grid grid-cols-3 w-max text-center">
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style=" margin-top: -10rem;"
@@ -447,8 +469,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -464,15 +486,15 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style="margin-top: -10rem; opacity:0;"
 		/>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style=" margin-top: -10rem"
@@ -488,8 +510,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -504,8 +526,8 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style="margin-top: -10rem"
@@ -521,22 +543,22 @@
 			</p>
 		</div>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style="margin-top: -10rem; opacity:0;"
 		/>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card mt-28"
 			style="opacity:0;"
 		/>
 		<div
-			data-aos="fade-up"
-			data-aos-anchor-placement="center-bottom"
+			data-aos={size0 ? 'none' : 'fade-up'}
+			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="500"
 			class="card"
 			style="margin-top: -10rem"
@@ -555,8 +577,8 @@
 
 <section
 	class="flex justify-start flex-col items-center"
-	data-aos="fade-up"
-	data-aos-anchor-placement="top-bottom"
+	data-aos={size0 ? 'none' : 'fade-up'}
+	data-aos-anchor-placement="none"
 	data-aos-duration="500"
 >
 	<div class="mt-16 mb-56 text-neutral-500">
@@ -569,8 +591,8 @@
 	</h2>
 
 	<div class="mt-14 flex"
-		 data-aos="fade-up"
-		 data-aos-anchor-placement="center-bottom"
+		 data-aos={size0 ? 'none' : 'fade-up'}
+		 data-aos-anchor-placement="bottom-bottom"
 		 data-aos-duration="500">
 		<a
 			class="text-white relative mx-3
@@ -591,8 +613,8 @@
 	</div>
 	<div class="mt-14 flex">
 		<div
-				data-aos="fade-up"
-				data-aos-anchor-placement="center-bottom"
+				data-aos={size0 ? 'none' : 'fade-up'}
+				data-aos-anchor-placement="bottom-bottom"
 				data-aos-duration="500"
 			class="card flex flex-col justify-center items-center text-white relative"
 			style="background: linear-gradient(180deg, rgba(255,115,90,0.64), rgba(255,0,0,0.83)); border: 0px solid rgba(255,255,255,0.5) !important; padding:1px !important;"
