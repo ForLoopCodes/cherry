@@ -99,6 +99,11 @@ section {
 	background: linear-gradient(180deg, rgba(255, 255, 255, 5%), rgba(255, 255, 255, 4%));
 	aspect-ratio: 11/12;
 }
+@media (max-width: 800px) {
+	.card {
+		margin: 1.5rem;
+	}
+}
 .card:hover {
 	transform: scale(1.02) !important;
 }
@@ -113,4 +118,7 @@ section {
 }
 .hidden {
 	display: none !important;
+}
+.hidescrollbar::-webkit-scrollbar {
+	display: none;
 }

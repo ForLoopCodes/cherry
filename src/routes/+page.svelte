@@ -33,9 +33,10 @@
 			pagescrollY = window.scrollY;
 			console.log(pagescrollY);
 			if (pagescrollY < 1833) {
-				elementOneMarginX = 140;
+				elementOneMarginX = 10;
 			} else {
-				elementOneMarginX = 140 - (pagescrollY - 1833) / 10;
+				elementOneMarginX = size0 ? 200 - (pagescrollY - 1833) / 10 : 100 - (pagescrollY - 1833) / 15;
+					//140 - (pagescrollY - 1833) / 10;
 				console.log(elementOneMarginX);
 			}
 		});
@@ -166,7 +167,7 @@
 	</a>
 </header>
 
-<section class="{size0 ? 'pt-16' : size1 ? 'pt-20' : 'pt-24'} flex justify-start items-center flex-col text-center px-10">
+<section class="{size0 ? 'pt-16' : size1 ? 'pt-20' : size3 ? 'pt-64' : 'pt-24'} flex justify-start items-center flex-col text-center px-10">
 	<h2
 		class="{size0 ? 'text-lg' : 'text-2xl'} text-neutral-500 font-bold tracking-normal mt-32 bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-400"
 	>
@@ -244,7 +245,7 @@
 			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style=" margin-top: -10rem;"
+			style={size0 ? "margin-top: -15rem" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500"
@@ -284,7 +285,7 @@
 			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style=" margin-top: -10rem"
+			style={size0 ? "" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-cyan-500"
@@ -316,7 +317,7 @@
 			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem"
+			style={size0 ? "" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-pink-500"
@@ -360,7 +361,8 @@
 		Ch$rry is not limited to this...
 	</h2>
 	<div
-		class="mt-60 overflow-hidden text-white spacefont w-full flex flex-col justify-center items-start"
+		class="mt-60 overflow-hidden text-white spacefont w-full flex flex-col justify-center items-start hidescrollbar"
+		style={size0 && "width: 100vw !important; overflow-x:scroll!important;"}
 	>
 		<ul
 			class="flex my-3"
@@ -369,12 +371,28 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Aki</li>
-			<li class="commanditem">/Avatar</li>
-			<li class="commanditem">/Badges</li>
-			<li class="commanditem">/Balanace</li>
-			<li class="commanditem">/Banner</li>
-			<li class="commanditem">/Beg</li>
+			<li class="commanditem">/Alter balance<li>
+			<li class="commanditem">/Alter reset<li>
+			<li class="commanditem">/Alter blacklist<li>
+			<li class="commanditem">/Alter unblacklist<li>
+			<li class="commanditem">/Alter premium<li>
+			<li class="commanditem">/Alter inventory<li>
+			<li class="commanditem">/Developermode<li>
+			<li class="commanditem">/Eval<li>
+			<li class="commanditem">/Outages report<li>
+			<li class="commanditem">/Outages update<li>
+			<li class="commanditem">/Balance<li>
+			<li class="commanditem">/Beg<li>
+			<li class="commanditem">/Crypto buy<li>
+			<li class="commanditem">/Crypto sell<li>
+			<li class="commanditem">/Crypto assets<li>
+			<li class="commanditem">/Crypto charts<li>
+			<li class="commanditem">/Dig<li>
+			<li class="commanditem">/Fish<li>
+			<li class="commanditem">/Gamble dice<li>
+			<li class="commanditem">/Gamble slots<li>
+			<li class="commanditem">/Gamble roulette<li>
+			<li class="commanditem">/Gamble coinflip<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -383,12 +401,27 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Ben</li>
-			<li class="commanditem">/Botinfo</li>
-			<li class="commanditem">/Chatgpt ask</li>
-			<li class="commanditem">/Chatgpt followup</li>
-			<li class="commanditem">/Color</li>
-			<li class="commanditem">/Crypto</li>
+			<li class="commanditem">/Gamble minesweeper<li>
+			<li class="commanditem">/Hunt<li>
+			<li class="commanditem">/Inventory<li>
+			<li class="commanditem">/Job list<li>
+			<li class="commanditem">/Job apply<li>
+			<li class="commanditem">/Job resign<li>
+			<li class="commanditem">/Job work<li>
+			<li class="commanditem">/Leaderboard server<li>
+			<li class="commanditem">/Leaderboard global<li>
+			<li class="commanditem">/Lottery next<li>
+			<li class="commanditem">/Marriage marry<li>
+			<li class="commanditem">/Marriage divorce<li>
+			<li class="commanditem">/Marriage view<li>
+			<li class="commanditem">/Pet buy<li>
+			<li class="commanditem">/Pet disown<li>
+			<li class="commanditem">/Postmeme<li>
+			<li class="commanditem">/Profile<li>
+			<li class="commanditem">/Rewards daily<li>
+			<li class="commanditem">/Rewards weekly<li>
+			<li class="commanditem">/Rewards monthly<li>
+			<li class="commanditem">/Search<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -397,12 +430,28 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Discrim</li>
-			<li class="commanditem">/HypeSquad</li>
-			<li class="commanditem">/Image generate</li>
-			<li class="commanditem">/Image Get</li>
-			<li class="commanditem">/Instagram user</li>
-			<li class="commanditem">/Inventory</li>
+			<li class="commanditem">/Shop buy<li>
+			<li class="commanditem">/Shop sell<li>
+			<li class="commanditem">/Shop sellall<li>
+			<li class="commanditem">/Stats<li>
+			<li class="commanditem">/Transfer deposit<li>
+			<li class="commanditem">/Transfer withdraw<li>
+			<li class="commanditem">/Transfer pay<li>
+			<li class="commanditem">/8ball<li>
+			<li class="commanditem">/Advice<li>
+			<li class="commanditem">/Aki<li>
+			<li class="commanditem">/Ben<li>
+			<li class="commanditem">/Draw<li>
+			<li class="commanditem">/Fortunecookie<li>
+			<li class="commanditem">/Image get<li>
+			<li class="commanditem">/Image generate<li>
+			<li class="commanditem">/Rates gay<li>
+			<li class="commanditem">/Rates iq<li>
+			<li class="commanditem">/Rates thot<li>
+			<li class="commanditem">/Rates pp<li>
+			<li class="commanditem">/Ship<li>
+			<li class="commanditem">/Botinfo<li>
+			<li class="commanditem">/Devices<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -411,12 +460,28 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Help</li>
-			<li class="commanditem">/Hunt</li>
-			<li class="commanditem">/Job</li>
-			<li class="commanditem">/Devices</li>
-			<li class="commanditem">/Dig</li>
-			<li class="commanditem">/Lastfm</li>
+			<li class="commanditem">/Ping<li>
+			<li class="commanditem">/Serverinfo<li>
+			<li class="commanditem">/Uptime<li>
+			<li class="commanditem">/Whois<li>
+			<li class="commanditem">/Lastfm connect<li>
+			<li class="commanditem">/Lastfm disconnect<li>
+			<li class="commanditem">/Lastfm nowplaying<li>
+			<li class="commanditem">/Lastfm recent<li>
+			<li class="commanditem">/Lastfm albums<li>
+			<li class="commanditem">/Lastfm artists<li>
+			<li class="commanditem">/Lastfm songs<li>
+			<li class="commanditem">/Levels rank<li>
+			<li class="commanditem">/Levels leaderboard<li>
+			<li class="commanditem">/Avatar<li>
+			<li class="commanditem">/Badges<li>
+			<li class="commanditem">/Banner<li>
+			<li class="commanditem">/Discrim<li>
+			<li class="commanditem">/Help<li>
+			<li class="commanditem">/Hypesquad<li>
+			<li class="commanditem">/Serveravatar<li>
+			<li class="commanditem">/Snipe deleted<li>
+			<li class="commanditem">/Snipe edited<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -425,12 +490,28 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/Draw</li>
-			<li class="commanditem">/Embed</li>
-			<li class="commanditem">/Enlarge</li>
-			<li class="commanditem">/Eval</li>
-			<li class="commanditem">/Fish</li>
-			<li class="commanditem">/Fortunecookie</li>
+			<li class="commanditem">/Suggest<li>
+			<li class="commanditem">/Urban word<li>
+			<li class="commanditem">/Urban random<li>
+			<li class="commanditem">/Nuke<li>
+			<li class="commanditem">/Punish warn<li>
+			<li class="commanditem">/Punish timeout<li>
+			<li class="commanditem">/Punish untimeout<li>
+			<li class="commanditem">/Punish kick<li>
+			<li class="commanditem">/Punish ban<li>
+			<li class="commanditem">/Punish banid<li>
+			<li class="commanditem">/Punish unban<li>
+			<li class="commanditem">/Punishments view<li>
+			<li class="commanditem">/Punishments clear<li>
+			<li class="commanditem">/Purge messages<li>
+			<li class="commanditem">/Purge user<li>
+			<li class="commanditem">/Purge bots<li>
+			<li class="commanditem">/Purge match<li>
+			<li class="commanditem">/Purge includes<li>
+			<li class="commanditem">/Purge links<li>
+			<li class="commanditem">/Settings user autolottery<li>
+			<li class="commanditem">/Settings guild view<li>
+			<li class="commanditem">/Settings guild autotts<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -439,24 +520,42 @@
 			data-aos-anchor-placement="bottom-bottom"
 			data-aos-duration="1000"
 		>
-			<li class="commanditem">/8Ball</li>
-			<li class="commanditem">/Advise</li>
-			<li class="commanditem">/Gamble</li>
-			<li class="commanditem">/Instagram download</li>
-			<li class="commanditem">/Leaderboard</li>
-			<li class="commanditem">/Levels</li>
+			<li class="commanditem">/Settings guild booster<li>
+			<li class="commanditem">/Settings guild chatbot<li>
+			<li class="commanditem">/Settings guild grabify<li>
+			<li class="commanditem">/Settings guild invites<li>
+			<li class="commanditem">/Settings guild joinlog<li>
+			<li class="commanditem">/Settings guild leveling<li>
+			<li class="commanditem">/Settings guild logs<li>
+			<li class="commanditem">/Settings guild membercount<li>
+			<li class="commanditem">/Settings guild addbutton<li>
+			<li class="commanditem">/Settings guild colors<li>
+			<li class="commanditem">/Setup<li>
+			<li class="commanditem">/Tickets setup<li>
+			<li class="commanditem">/Tickets add<li>
+			<li class="commanditem">/Chatgpt ask<li>
+			<li class="commanditem">/Chatgpt followup<li>
+			<li class="commanditem">/Color<li>
+			<li class="commanditem">/Embed<li>
+			<li class="commanditem">/Enlarge<li>
+			<li class="commanditem">/Instagram download<li>
+			<li class="commanditem">/Instagram user<li>
+			<li class="commanditem">/Steal<li>
+			<li class="commanditem">/Tiktok<li>
+			<li class="commanditem">/Translate<li>
 		</ul>
 	</div>
 </section>
-<section class="flex justify-center flex-col items-center mt-36">
-	<div class="mt-16 mb-96 text-neutral-500">Not yet, there's even more!</div>
-	<div class="grid grid-cols-3 w-max text-center">
+
+<section class="{size0 ? 'mt-20' : size1 ? 'mt-16' : 'mt-24'} flex justify-center flex-col items-center">
+	<div class="{size0 ? 'mt-2 text-sm' : size1 ? 'mt-20' : 'mt-24'} mb-80 text-neutral-500">Not yet, there's even more!</div>
+	<div class="grid {size0 ? 'grid-cols-1' : size1 ? 'grid-cols-2' : 'grid-cols-3'} w-max text-center">
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style=" margin-top: -10rem;"
+			style={size0 ? "margin-top: -15rem" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-teal-500"
@@ -470,7 +569,7 @@
 		</div>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -487,17 +586,17 @@
 		</div>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem; opacity:0;"
+			style="margin-top: -10rem; opacity:0;{size0 || size1 ? 'display: none' : 'display: auto'}"
 		/>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style=" margin-top: -10rem"
+			style={size0 ? "" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-red-500"
@@ -511,7 +610,7 @@
 		</div>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card mt-28"
 			style="background: linear-gradient(180deg, rgba(255,255,255,4%), rgba(255,255,255,3%));"
@@ -527,10 +626,10 @@
 		</div>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem"
+			style={size0 ? "" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-yellow-500"
@@ -544,24 +643,24 @@
 		</div>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem; opacity:0;"
+			style="margin-top: -10rem; opacity:0;{size0 || size1 ? 'display: none' : 'display: auto'}"
 		/>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card mt-28"
-			style="opacity:0;"
+			style="margin-top: -10rem; opacity:0;{size0 || size1 ? 'display: none' : 'display: auto'}"
 		/>
 		<div
 			data-aos={size0 ? 'none' : 'fade-up'}
-			data-aos-anchor-placement="bottom-bottom"
+			data-aos-anchor-placement={size0 ? 'none' : size1 ? 'center-bottom' : 'bottom-bottom'}
 			data-aos-duration="500"
 			class="card"
-			style="margin-top: -10rem"
+			style={size0 ? "" : size1 ? "margin-top: 3rem" : "margin-top: -10rem"}
 		>
 			<p
 				class="text-4xl tracking-tighter my-5 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-emerald-500"
@@ -574,9 +673,8 @@
 		</div>
 	</div>
 </section>
-
 <section
-	class="flex justify-start flex-col items-center"
+	class="flex justify-start flex-col items-center px-5 text-center"
 	data-aos={size0 ? 'none' : 'fade-up'}
 	data-aos-anchor-placement="none"
 	data-aos-duration="500"
@@ -625,7 +723,7 @@
 				>
 					Buy Ch$rry Premium!
 				</h2>
-				<ul class="mt-10 list-disc text-neutral-300">
+				<ul class="mt-10 list-disc text-neutral-300 text-left">
 					<li>More Economy commands!</li>
 					<li>More Premium features coming soon!</li>
 				</ul>
@@ -647,9 +745,9 @@
 </section>
 <!-- TODO:
 [ ] Add Routes
-[ ] Responsive Design
 [ ] Clap review
 [ ] Add Commands
+[x] Responsive Design
 [x] Mouse Follower
 [x] Margin issues
 [x] Add info on premium
