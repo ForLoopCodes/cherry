@@ -4,6 +4,14 @@
 	import AOS from 'aos';
 
 	import { onMount } from 'svelte';
+	/*
+  ___  _                    _  _
+ / __|| |_   ___  _ _  _ _ | || |
+| (__ |   \ / -_)| '_|| '_| \_. |
+ \___||_||_|\___||_|  |_|   |__/
+	*/
+
+	console.log('  ___  _                    _  _ \n / __|| |_   ___  _ _  _ _ | || |\n| (__ |   \\ / -_)| \'_|| \'_| \\_. |\n \\___||_||_|\\___||_|  |_|   |__/ \n \nch$rry network | https://cherrybot.xyz | https://discord.gg/aTGSF4U6f4');
 	$: screenWidth = 0;
 	$: size0 = screenWidth <= 800 && screenWidth > 0
 	$: size1 = screenWidth <= 1250 && screenWidth > 800
@@ -31,19 +39,16 @@
 		AOS.init();
 		window.addEventListener('scroll', () => {
 			pagescrollY = window.scrollY;
-			console.log(pagescrollY);
 			if (pagescrollY < 1833) {
 				elementOneMarginX = 10;
 			} else {
 				elementOneMarginX = size0 ? 200 - (pagescrollY - 1833) / 10 : 100 - (pagescrollY - 1833) / 15;
 					//140 - (pagescrollY - 1833) / 10;
-				console.log(elementOneMarginX);
 			}
 		});
         window.addEventListener('mousemove', (e) => {
             MouseX = e.clientX;
             MouseY = e.clientY;
-            console.log(MouseX, MouseY);
         });
 		screenWidth = window.innerWidth;
 		size0 = screenWidth <= 800 && screenWidth > 0
