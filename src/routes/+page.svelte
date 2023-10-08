@@ -397,6 +397,7 @@
 			<li class="commanditem">/Gamble slots<li>
 			<li class="commanditem">/Gamble roulette<li>
 			<li class="commanditem">/Gamble coinflip<li>
+			<li class="commanditem">/Instagram user<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -426,6 +427,7 @@
 			<li class="commanditem">/Rewards weekly<li>
 			<li class="commanditem">/Rewards monthly<li>
 			<li class="commanditem">/Search<li>
+			<li class="commanditem">/Settings guild autotts<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -456,6 +458,10 @@
 			<li class="commanditem">/Ship<li>
 			<li class="commanditem">/Botinfo<li>
 			<li class="commanditem">/Devices<li>
+			<li class="commanditem">/Tiktok<li>
+			<li class="commanditem">/Translate<li>
+			<li class="commanditem">/Enlarge<li>
+			<li class="commanditem">/Instagram download<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -486,6 +492,7 @@
 			<li class="commanditem">/Serveravatar<li>
 			<li class="commanditem">/Snipe deleted<li>
 			<li class="commanditem">/Snipe edited<li>
+			<li class="commanditem">/Steal<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -515,7 +522,6 @@
 			<li class="commanditem">/Purge links<li>
 			<li class="commanditem">/Settings user autolottery<li>
 			<li class="commanditem">/Settings guild view<li>
-			<li class="commanditem">/Settings guild autotts<li>
 		</ul>
 		<ul
 			class="flex my-3"
@@ -541,12 +547,6 @@
 			<li class="commanditem">/Chatgpt followup<li>
 			<li class="commanditem">/Color<li>
 			<li class="commanditem">/Embed<li>
-			<li class="commanditem">/Enlarge<li>
-			<li class="commanditem">/Instagram download<li>
-			<li class="commanditem">/Instagram user<li>
-			<li class="commanditem">/Steal<li>
-			<li class="commanditem">/Tiktok<li>
-			<li class="commanditem">/Translate<li>
 		</ul>
 	</div>
 </section>
