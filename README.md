@@ -1,38 +1,21 @@
-# create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![Ch$rry Bot Logo](https://cdn.discordapp.com/app-icons/775604826448592927/abf5192ec4fb13ae82986820d4731a42.webp?size=128)
+# Ch$rry Bot Website
 
-## Creating a project
+---
+## Features
+- **Utilities:** Ch$rry is a multi-purpose Discord bot with utilities like moderation, AI, economy, and more.
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **Moderation:** Advanced moderation tools to keep your server safe and clean.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- **ChatGPT:** Directly interact with ChatGPT through your server.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- **AI Tools:** Generate images, texts, and more with different options.
 
-## Developing
+- **Games:** Fun and interactive games for your server.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- **Economy:** Crypto system linked to real-life crypto coins.
+---
+## Links
+- For more information, visit the [Ch$rry Bot Official Website](https://cherrybot.xyz).
+- For support or inquiries, please contact [support@cherrybot.xyz](mailto:support@cherrybot.xyz).
