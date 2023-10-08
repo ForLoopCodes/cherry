@@ -11,11 +11,12 @@
  \___||_||_|\___||_|  |_|   |__/
 	*/
 
-	console.log('  ___  _                    _  _ \n / __|| |_   ___  _ _  _ _ | || |\n| (__ |   \\ / -_)| \'_|| \'_| \\_. |\n \\___||_||_|\\___||_|  |_|   |__/ \n \nch$rry network | https://cherrybot.xyz | https://discord.gg/aTGSF4U6f4');
+	console.log('%c  ___  _                    _  _ \n / __|| |_   ___  _ _  _ _ | || |\n| (__ |   \\ / -_)| \'_|| \'_| \\_. |\n \\___||_||_|\\___||_|  |_|   |__/ \n \nCh$rry network | https://cherrybot.xyz | https://discord.gg/aTGSF4U6f4', 'color: #e06c75');
+	console.log('%cWait! it seems like you\'re a developer. Check out: \n|- API: https://docs.cherrybot.xyz \n|- Bot Dev: https://www.github.com/clapann\n|- Site Dev: https://www.github.com/forloopcodes'
+		, 'color: #bada55');
 	$: screenWidth = 0;
 	$: size0 = screenWidth <= 800 && screenWidth > 0
 	$: size1 = screenWidth <= 1250 && screenWidth > 800
-	$: size2 = screenWidth <= 2000 && screenWidth > 1250
 	$: size3 = screenWidth <= 3000 && screenWidth > 2000
 	let pagescrollY = 0;
 	let elementOneMarginX = 0;
@@ -53,13 +54,11 @@
 		screenWidth = window.innerWidth;
 		size0 = screenWidth <= 800 && screenWidth > 0
 		size1 = screenWidth <= 1250 && screenWidth > 800
-		size2 = screenWidth <= 2000 && screenWidth > 1250
 		size3 = screenWidth <= 3000 && screenWidth > 2000
 		window.addEventListener('resize', () => {
 			screenWidth = window.innerWidth;
 			size0 = screenWidth <= 800 && screenWidth > 0
 			size1 = screenWidth <= 1250 && screenWidth > 800
-			size2 = screenWidth <= 2000 && screenWidth > 1250
 			size3 = screenWidth <= 3000 && screenWidth > 2000
 		});
 		// when hover .card and buttons, change style of .mouseFollower
@@ -148,25 +147,25 @@
 	</a>
 	<a
 			class="mx-4 hover:text-neutral-200 hover-underline-animation bg-clip-text text-transparent bg-gradient-to-r from-red-700 to-amber-900 font-extrabold after:scale-x-100 after:origin-bottom-left after:bg-gradient-to-r after:from-red-700 after:to-amber-900"
-			href="https://top.gg/bot/775604826448592927/vote"
+			href="/vote"
 	>
 		Vote for Ch$rry
 	</a>
 	<a
 		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
-		href="https://discord.com/oauth2/authorize?client_id=775604826448592927&permissions=1644971949567&scope=applications.commands%20bot"
+		href="/invite"
 	>
 		Invite
 	</a>
 	<a
 		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
-		href="https://discord.com/invite/aTGSF4U6f4"
+		href="/discord"
 	>
 		Support
 	</a>
 	<a
 		class="mx-4 hover:text-neutral-200 {size0 && 'hidden'} hover-underline-animation"
-		href="https://docs.cherrybot.xyz/"
+		href="/api"
 	>
 		API for developers
 	</a>
@@ -213,7 +212,7 @@
 		<a
 			class="text-white relative mx-3
 		 rounded-lg z-1 bg-gradient-to-r from-neutral-100 to-neutral-300"
-			href="https://discord.com/invite/aTGSF4U6f4"
+			href="/discord"
 			style="padding: 1px"
 		>
 			<div
@@ -225,7 +224,7 @@
 		<a
 			class="text-white relative mx-3
 		 rounded-lg z-1 bg-gradient-to-r {arrayOfFeatures[num].style}"
-			href="https://discord.com/oauth2/authorize?client_id=775604826448592927&permissions=1644971949567&scope=applications.commands%20bot"
+			href="/invite"
 			style="padding: 1px"
 		>
 			<div
@@ -700,7 +699,7 @@
 		<a
 			class="text-white relative mx-3
 		 rounded-lg z-1 bg-gradient-to-r from-neutral-100 to-neutral-300"
-			href="https://discord.com/oauth2/authorize?client_id=775604826448592927&permissions=1644971949567&scope=applications.commands%20bot"
+			href="/invite"
 			style="padding: 1px"
 		>
 			<div
@@ -748,15 +747,4 @@
 		<a class="hover-underline-animation" href="https://www.github.com/forloopcodes">Forloop</a>
 	</p>
 </section>
-<!-- TODO:
-[ ] Add Routes
-[ ] Clap review
-[ ] Add Commands
-[x] Responsive Design
-[x] Mouse Follower
-[x] Margin issues
-[x] Add info on premium
-[x] Colors
-[x] Year
-[x] Title
--->
+<!-- LINE 750 | Never gonna give you up | LOL | 🍒🍒🍒🍒🍒🍒🍒🍒🍒🍒-->
